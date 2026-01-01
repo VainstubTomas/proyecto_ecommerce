@@ -1,0 +1,59 @@
+<div>
+    <header id="ecommerceHeader">
+        <a href="/"><h1 class="display-1" id="mainIcon">Apple Prods</h1></a>
+        <div id="searchCartByCID">
+            <form id="searchForm" method="get" class="d-flex gap-2">
+            
+                <input  class="form-control" type="text" name="cid" id="cidInputHeader" placeholder="Search your cart with the id" required>
+                <button type="submit" class="btn btn-primary d-flex align-items-center">
+                    <img src="/images/ShoppingCartRounded.png" alt="imagen carrito" id="carritoIcon">
+                </button>
+                
+
+            </form>
+        </div>
+    </header>
+
+    <div id="productsCardsContainer">
+            <div id="products-list-wrapper">
+                {{#each products}}
+                <div class="card" id="indexCard">
+                    <li id="liCard">
+                        <img src={{this.thumbnails}} alt="imagen producto" class="productImage">
+                        <div id="productsTexts">  
+                            <h2 class="display-3">{{this.title}}</h2>
+                            <h3 class="display-4">${{this.price}}</h3>
+                            <a href="/product/{{this.id}}">
+                                <button type="button" class="btn btn-primary">Description</button>
+                            </a>
+                        </div>
+                    </li>
+                </div>
+                {{/each}}
+            </div>
+    </div>
+
+    <div id="paginationNav">
+        {{#each links}}
+        <a href={{this.link}}>{{this.text}}</a>
+        {{/each}}
+    </div>
+
+</div>
+
+<script>
+    const searchForm = document.getElementById('searchForm');
+    const cidInput = document.getElementById('cidInputHeader');
+
+    searchForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const cartId = cidInput.value;
+        
+        if (cartId) {
+            window.location.href = `/carts/${cartId}`;
+        } else {
+            alert("Por favor, introduce un ID de carrito.");
+        }
+    });
+</script>
