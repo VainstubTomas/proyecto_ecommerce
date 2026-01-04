@@ -1,6 +1,12 @@
+import HeroHome from "./hero/hero";
+import FeaturedProductAndPayMethod from "./featured/featuredProductAndPayMethod";
+
 function Home () {
     return(
-        <div><h1>HOME</h1></div>
+        <section>
+            <HeroHome/>
+            <FeaturedProductAndPayMethod/>
+        </section>
     )
 }
 

@@ -9,11 +9,15 @@ import FooterComponent from "./components/footer/footer";
 function App () {
   return(
     <BrowserRouter>
-      <NavBar/>
-      <Routes>
-        <Route path="/" element={<Home />}/>
-      </Routes>
-      <FooterComponent/>
+      <div className="flex flex-col min-h-screen">
+        <NavBar/>
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<Home />}/>
+          </Routes>
+        </main>
+        <FooterComponent/>
+      </div>
     </BrowserRouter>
   )
 }
